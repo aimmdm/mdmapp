@@ -3,56 +3,46 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Marilmu Tools PWA</title>
-  <meta name="description" content="PWA ringan untuk membaca konten Marilmu Tools dari Blogger.">
+  <title>MDM App</title>
+  <meta name="description" content="PWA ringan untuk membaca konten blog kamu dari Blogger via JSONP.">
   <meta name="theme-color" content="#0d47a1">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="apple-touch-icon" href="icon/mdm-180.png">
+  <!-- Jika belum punya 180x180, sementara pakai 192x192 -->
+  <link rel="apple-touch-icon" href="mdm-192.png">
   <link rel="stylesheet" href="styles.css">
   <script defer src="app.js"></script>
   <script>
-    // Registrasi Service Worker dgn path RELATIF (penting untuk Project Pages)
+    // Registrasi Service Worker (RELATIF agar aman di Project Pages)
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', async () => {
         try {
-          const reg = await navigator.serviceWorker.register('sw.js', { scope: './' });
-          console.log('[PWA] SW registered:', reg.scope);
+          await navigator.serviceWorker.register('sw.js', { scope: './' });
         } catch (e) {
-          console.error('[PWA] SW register error:', e);
+          console.error('SW register error:', e);
         }
       });
     }
-    // Logger diagnosa
-    window.addEventListener('load', async () => {
-      try {
-        const r = await fetch('manifest.webmanifest');
-        console.log('[PWA] manifest status:', r.status, r.headers.get('content-type'));
-      } catch (e) { console.log('[PWA] manifest fetch error', e); }
-    });
-    window.addEventListener('beforeinstallprompt', (e) => {
-      console.log('[PWA] beforeinstallprompt fired');
-    });
   </script>
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand">Marilmu Tools</div>
-    <form id="search-form" class="search" role="search">
-      <input id="search-input" type="search" placeholder="Cari..." aria-label="Cari" />
-      <button type="submit">Cari</button>
+  <header class="topbar" role="banner">
+    <div class="brand">MDM App</div>
+    <form id="search-form" class="search" role="search" aria-label="Pencarian">
+      <input id="search-input" type="search" placeholder="Cari..." aria-label="Masukkan kata kunci" />
+      <button type="submit" aria-label="Cari">Cari</button>
     </form>
   </header>
 
-  <nav class="nav">
+  <nav class="nav" role="navigation" aria-label="Navigasi utama">
     <a href="#/">Beranda</a>
   </nav>
 
-  <main id="app" class="container" aria-live="polite"></main>
+  <main id="app" class="container" role="main" aria-live="polite"></main>
 
-  <button id="install-btn" class="install-btn" style="display:none;">Install aplikasi</button>
+  <button id="install-btn" class="install-btn" style="display:none;" aria-label="Install aplikasi">Install aplikasi</button>
 
   <script>
-    // Tombol install kustom
+    // Tombol Install kustom
     let deferredPrompt;
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
@@ -63,8 +53,7 @@
         btn.disabled = true;
         try {
           deferredPrompt.prompt();
-          const { outcome } = await deferredPrompt.userChoice;
-          console.log('[PWA] userChoice:', outcome);
+          await deferredPrompt.userChoice;
         } finally {
           deferredPrompt = null;
           btn.style.display = 'none';
@@ -72,11 +61,10 @@
       };
     });
     window.addEventListener('appinstalled', () => {
-      console.log('[PWA] installed');
       const btn = document.getElementById('install-btn');
       if (btn) btn.style.display = 'none';
     });
-    // Sembunyikan jika sudah standalone
+    // Sembunyikan bila sudah di-install
     if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
       const btn = document.getElementById('install-btn');
       if (btn) btn.style.display = 'none';

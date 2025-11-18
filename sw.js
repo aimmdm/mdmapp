@@ -6,9 +6,9 @@ const SHELL = [
   './styles.css',
   './app.js',
   './manifest.webmanifest',
-  './pwa/icons/icon-192.png',
-  './pwa/icons/icon-512.png',
-  './pwa/icons/apple-touch-icon-180.png'
+  './icon/mdm-192.png',
+  './icon/mdm-512.png',
+  './icon/mdm-180.png'
 ];
 
 self.addEventListener('install', (e) => {

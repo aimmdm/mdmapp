@@ -3,7 +3,7 @@
   "short_name": "MDM APP",
   "description": "Marilmu Dot Marepeng - Solusi Untuk Masakini",
   "id": "https://marilmudotmarepengtools.blogspot.com/",
-  "start_url": "https://marilmudotmarepengtools.blogspot.com/",
+  "start_url": "https://marilmudotmarepengtools.blogspot.com/?utm_source=a2hs",
   "scope": "https://marilmudotmarepengtools.blogspot.com/",
   "display": "standalone",
   "orientation": "portrait",

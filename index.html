@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Marilmu Tools PWA</title>
+  <meta name="description" content="PWA ringan untuk membaca konten Marilmu Tools dari Blogger.">
+  <meta name="theme-color" content="#0d47a1">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="pwa/icons/apple-touch-icon-180.png">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+  <script>
+    // Registrasi SW (pakai path relatif agar aman di project pages)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(console.error);
+      });
+    }
+  </script>
+</head>
+<body>
+  <header class="topbar" role="banner">
+    <div class="brand">Marilmu Tools</div>
+    <form id="search-form" class="search" role="search" aria-label="Pencarian">
+      <input id="search-input" type="search" placeholder="Cari..." aria-label="Masukkan kata kunci" />
+      <button type="submit" aria-label="Cari">Cari</button>
+    </form>
+  </header>
+
+  <nav class="nav" role="navigation" aria-label="Navigasi utama">
+    <a href="#/">Beranda</a>
+    <!-- Tambah link label favorit jika mau: -->
+    <!-- <a href="#/label/Tutorial">Tutorial</a> -->
+  </nav>
+
+  <main id="app" class="container" role="main" aria-live="polite">
+    <!-- Konten dirender oleh app.js -->
+  </main>
+
+  <button id="install-btn" class="install-btn" style="display:none;" aria-label="Install aplikasi">Install aplikasi</button>
+</body>
+</html>

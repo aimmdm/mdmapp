@@ -2,9 +2,9 @@
   "name": "Marilmu Dot Marepeng",
   "short_name": "MDM APP",
   "description": "Marilmu Dot Marepeng - Solusi Untuk Masakini",
-  "id": "https://marilmudotmarepengtools.blogspot.com/",
-  "start_url": "https://marilmudotmarepengtools.blogspot.com/?utm_source=a2hs",
-  "scope": "https://marilmudotmarepengtools.blogspot.com/",
+  "id": "https://www.mainilmu.pro/",
+  "start_url": "https://www.mainilmu.pro//?utm_source=a2hs",
+  "scope": "https://www.mainilmu.pro/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#ffffff",
@@ -12,9 +12,5 @@
   "icons": [
     { "src": "https://aimmdm.github.io/mdmapp/mdm-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
     { "src": "https://aimmdm.github.io/mdmapp/mdm-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
-  ],
-  "shortcuts": [
-    { "name": "Home", "url": "https://marilmudotmarepengtools.blogspot.com/" },
-    { "name": "Tools", "url": "https://marilmudotmarepengtools.blogspot.com/" }
   ]
 }

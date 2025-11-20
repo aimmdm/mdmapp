@@ -3,7 +3,7 @@
   "short_name": "MDM APP",
   "description": "Marilmu Dot Marepeng - Solusi Untuk Masakini",
   "id": "https://www.mainilmu.pro/",
-  "start_url": "https://www.mainilmu.pro//?utm_source=a2hs",
+  "start_url": "https://www.mainilmu.pro/?utm_source=a2hs",
   "scope": "https://www.mainilmu.pro/",
   "display": "standalone",
   "orientation": "portrait",

@@ -1,0 +1,12 @@
+{
+  "name": "mainilmu-assets",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pustaka tools berbasis browser dan backend opsional untuk blog Blogger",
+  "type": "module",
+  "scripts": {
+    "sri": "node scripts/sri.mjs",
+    "test:backend": "node apps-script/test/gas-mock-test.cjs"
+  },
+  "license": "UNLICENSED"
+}
